@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fruit Crush - Match 3 Puzzle</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header & Stats Panel -->
+        <header class="game-header glass-panel">
+            <div class="top-bar">
+                <h1 class="game-title"><span>🍓</span> Fruit Crush</h1>
+                <div class="header-controls">
+                    <button id="btnHint" class="btn-icon" title="Get Hint">💡</button>
+                    <button id="btnSound" class="btn-icon" title="Toggle Sound">🔊</button>
+                    <button id="btnRestart" class="btn-icon" title="Restart Level">🔄</button>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="stats-grid">
+                <div class="stat-box stat-score">
+                    <div class="stat-label">Score</div>
+                    <div id="scoreVal" class="stat-value">0</div>
+                </div>
+                <div class="stat-box stat-moves">
+                    <div class="stat-label">Moves Left</div>
+                    <div id="movesVal" class="stat-value">25</div>
+                </div>
+                <div class="stat-box stat-target">
+                    <div class="stat-label">Target</div>
+                    <div id="targetVal" class="stat-value">2,500</div>
+                </div>
+            </div>
+
+            <!-- Star Progress Bar -->
+            <div class="star-progress-container">
+                <div class="progress-track">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <div class="star-badges">
+                    <div class="star-badge" id="star1" style="left: 33%;">⭐</div>
+                    <div class="star-badge" id="star2" style="left: 66%;">⭐</div>
+                    <div class="star-badge" id="star3" style="left: 100%;">⭐</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Board Wrapper -->
+        <div class="board-wrapper glass-panel">
+            <canvas id="particleCanvas"></canvas>
+            <div id="comboBanner" class="combo-banner">JUICY!</div>
+            <div id="board" class="game-board"></div>
+        </div>
+    </div>
+
+    <!-- Win / Game Over Modal -->
+    <div id="gameModal" class="modal-overlay">
+        <div class="modal-card">
+            <h2 id="modalTitle" class="modal-title">Awesome!</h2>
+            <p id="modalSubtitle" class="modal-subtitle">You beat the target!</p>
+            <div id="modalStars" class="modal-stars">
+                <span id="mStar1">⭐</span>
+                <span id="mStar2">⭐</span>
+                <span id="mStar3">⭐</span>
+            </div>
+            <div class="modal-score-box">
+                <div class="stat-label">Final Score</div>
+                <div id="modalScore" class="modal-score-num">0</div>
+                <div id="modalHighScore" style="font-size: 0.85rem; opacity: 0.8; margin-top: 4px;">High Score: 0</div>
+            </div>
+            <button id="btnModalAction" class="btn-primary">Play Next Level</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="particles.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
